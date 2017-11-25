@@ -42,7 +42,11 @@ public class Game {
 
     private void putSymbol(int x, int y, Symbol symbol) {
         int i = (y - 1) * BOARD_SIZE + (x - 1);
-        board[i] = symbol;
+        if(board[i].equals(Symbol.EMPTY)) {
+            board[i] = symbol;
+        }else{
+            isXTurn = !isXTurn;
+        }
     }
 
     public boolean isEnded() {

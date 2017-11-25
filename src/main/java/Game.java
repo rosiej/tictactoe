@@ -23,7 +23,7 @@ public class Game {
     }
 
     public void nextMove(int x, int y) {
-        if(isXTurn) {
+        if (isXTurn) {
             putX(x, y);
         } else {
             putO(x, y);
@@ -41,13 +41,13 @@ public class Game {
     }
 
     private void putSymbol(int x, int y, Symbol symbol) {
-        if(x < 1 || x > BOARD_SIZE || y < 1 || y > BOARD_SIZE) {
+        if (x < 1 || x > BOARD_SIZE || y < 1 || y > BOARD_SIZE) {
             throw new IllegalArgumentException();
         }
 
         int i = (y - 1) * BOARD_SIZE + (x - 1);
 
-        if(board[i] != Symbol.EMPTY) {
+        if (board[i] != Symbol.EMPTY) {
             throw new BoardCellNotEmptyException();
         }
 
@@ -56,13 +56,16 @@ public class Game {
 
     public boolean isEnded() {
         for (Symbol symbol : board) {
-            if(symbol == Symbol.EMPTY) {
+            if (symbol == Symbol.EMPTY) {
                 return false;
             }
         }
 
         return true;
+
     }
+
+
 
     public Symbol getActualPlayerSymbol() {
         return isXTurn ? Symbol.X : Symbol.O;

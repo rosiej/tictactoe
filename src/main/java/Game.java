@@ -41,7 +41,16 @@ public class Game {
     }
 
     private void putSymbol(int x, int y, Symbol symbol) {
+        if(x < 1 || x > BOARD_SIZE || y < 1 || y > BOARD_SIZE) {
+            throw new IllegalArgumentException();
+        }
+
         int i = (y - 1) * BOARD_SIZE + (x - 1);
+
+        if(board[i] != Symbol.EMPTY) {
+            throw new BoardCellNotEmptyException();
+        }
+
         board[i] = symbol;
     }
 
